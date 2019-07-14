@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+	
+	<bean id="aman" class ="com.jspiders.byType.Student" autowire="byName">
+	<property name="name" value="aman"></property>
+	<property name="rollNo" value="12"></property>
+	<property name="stream" value="CSE"></property>
+	<!--if we do manual injection and auto wire both it gives preference to manual injection..  -->
+	<!-- <property name="add" ref="office"></property> -->
+	<property name="dept">
+	<bean class="com.jspiders.byType.Department">
+	<property name="name"  value="Development"></property>
+	</bean>
+	</property>
+	</bean>
+	
+	<bean id="aakash" class ="com.jspiders.byType.Student" autowire="constructor">
+	<constructor-arg name="name" value="aakash"></constructor-arg>
+	<constructor-arg name="rollNo" value="45"></constructor-arg>
+	<constructor-arg name="stream" value="ECE"></constructor-arg>
+	<!--if we do manual injection and auto wire both it gives preference to manual injection..  -->
+	<!-- <property name="add" ref="office"></property> -->
+	<constructor-arg name="dept" >
+	
+	<bean class="com.jspiders.byType.Department">
+	<constructor-arg name="name" value="Testing"></constructor-arg>
+	</bean>
+	
+	</constructor-arg>
+	</bean>
+	
+	<bean id="add" class="com.jspiders.byType.Address">
+	<property name="city" value="AHD"></property>
+	<property name="state" value="Guj"></property>
+	<property name="pinCode" value="234342"></property>
+	</bean>
+	
+	<bean id="add1" class="com.jspiders.byType.Address" autowire-candidate="false"><!-- autowire-candidate="false" -->
+	<property name="city" value="BLR"></property>
+	<property name="state" value="Karnataka"></property>
+	<property name="pinCode" value="345665"></property>
+	
+	</bean>
+		
+	<bean id="add2" class="com.jspiders.byType.Address" autowire-candidate="false"> <!-- autowire-candidate="false" -->
+	<property name="city" value="XYZ"></property>
+	<property name="state" value="PQER"></property>
+	<property name="pinCode" value="345665"></property>
+	</bean>
+
+
+
+	</beans>	
+	<!-- <bean id="Aman" class="com.jspiders.si.Student">
+	<property name="name" value="Aman"></property>
+	<property name="listOfAddress">
+	<list>
+	will pass the id of other beans 
+	<ref bean="office"></ref>
+	<ref bean="home"></ref>
+	<ref bean="factory"></ref>
+	</list>
+	
+	</property>
+	</bean>
+	
+	<bean id="office" class="com.jspiders.si.Address">
+	<property name="street" value="Office Address"></property>
+	</bean>
+	
+	<bean id="home" class="com.jspiders.si.Address">
+	<property name="street" value="Home Address"></property>
+	</bean>
+	
+	<bean id="factory" class="com.jspiders.si.Address">
+	<property name="street" value="Factory Address"></property>
+	</bean>
+	
+	<bean id="Engine" class="com.jspiders.siInt.Engine">
+	<property name=""></property>
+	</bean>
+	
+	
+	
+	<bean id="Aakash" class="com.jspiders.si.Student">
+	<property name="name" value="Aakash"></property>
+	<property name="listOfAddress">
+	<map>
+	<entry key="2" value-ref="office"></entry>
+	<entry key="1" value-ref="home"></entry>
+	<entry key="2" value-ref="factory"></entry>
+	
+	</map>
+	
+	</property>
+	</bean>
+	
+	<bean id="office" class="com.jspiders.si.Address">
+	<property name="street" value="Aakash Office Address"></property>
+	</bean>
+	
+	<bean id="home" class="com.jspiders.si.Address">
+	<property name="street" value="Aakash Home Address"></property>
+	</bean>
+	
+	<bean id="factory" class="com.jspiders.si.Address">
+	<property name="street" value="Aakash Factory Address"></property>
+	</bean>
+ -->	
+ 
